@@ -37,7 +37,7 @@ const authUser = asyncHandler(async (req, res) => {
   // check if user exists and displays if so.
   const user = await User.findOne({ email });
 
-  if (user && (await User.matchPassword(password))) {
+  if (user && (await user.matchPassword(password))) {
     res.status(201).json({
       _id: user._id,
       name: user.name,
