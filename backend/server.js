@@ -3,6 +3,8 @@ const express = require("express");
 const dotenv = require("dotenv");
 const { chats } = require("./data/data");
 const userRoute = require("./routes/userRoutes");
+const notFound = require("./middleware/errorMiddleware");
+const errorHandler = require("./middleware/errorMiddleware");
 //using dependencies
 const app = express();
 dotenv.config();
@@ -10,6 +12,9 @@ const port = process.env.PORT || 4002;
 const connectDB = require("./config/db");
 app.use(express.json());
 app.use("/api/user", userRoute);
+
+app.use(errorHandler);
+app.use(notFound);
 //responses and requests
 
 app.get("/", (req, res) => {
