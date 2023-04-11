@@ -3,8 +3,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const { chats } = require("./data/data");
 const userRoute = require("./routes/userRoutes");
-const notFound = require("./middleware/errorMiddleware");
-const errorHandler = require("./middleware/errorMiddleware");
+const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 //using dependencies
 const app = express();
 dotenv.config();
